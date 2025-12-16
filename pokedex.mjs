@@ -16,7 +16,6 @@ async function prompts(cb){
     let term;
     try {
 	    term = await askQuestion("What would you like to search: ");
-	    //console.log(`Your term was, ${term}`);
     } catch(err) {
         console.error("An error occurred: not valid", err);
     }
@@ -24,15 +23,13 @@ async function prompts(cb){
         // To make sure the user types something in insted of enter or space
         console.log("You have to type what Pokémon you would like to search.");
 	    term = await askQuestion("What would you like to search: ");
-	    //console.log(`Your term was, ${term}.`)
     } else {
         await cb(term);
     }
 }
 
 async function searchPoke(term){
-    // query the API for a particular Pokemon (passed in as term). If it receives a valid response, it will call printPoke(json) with the json to print out the name, weight, height, base experience, and all the moves for that Pokemon. It will then call run() again to reprompt.
-    //console.log(`over here dofus: ${term}`); 
+    // query the API for a particular Pokemon (passed in as term). If it receives a valid response, it will call printPoke(json) with the json to print out the name, weight, height, base experience, and all the moves for that Pokemon. It will then call run() again to reprompt. 
     let json;
     try {
         let response = await fetch(`https://pokeapi.co/api/v2/pokemon/${term}`);
@@ -144,7 +141,6 @@ async function run(){
     let choice;
     try {
 	    choice = await askQuestion("Enter the menu choice: ")
-	    //console.log(`Your choice was, ${choice}.`)
     } catch(err) {
         console.error("An error occurred:", err);
     }
